@@ -1,3 +1,5 @@
+from collections import defaultdict
+import json
 
 KB = 1024
 MB = 1024*KB
@@ -118,6 +120,24 @@ class Workflow:
         
         f.write('</adag>\n')
         f.close()
+
+    def writeJSON(self, filename):
+        self._computeDataDependencies()
+
+        services = []
+        dag = defaultdict(dict)
+
+        for j in self.jobs:
+            for p in j.parents:
+                index = max([val for key, val in dag[p.id].iteritems()] or [-1]) + 1
+                dag[p.id][j.id] = index
+
+        json_out = { "dag": dag }
+
+        f = open(filename, "w")
+        f.write(json.dumps(json_out))
+        f.close()
+
     
     def writeDOT(self, filename, width=8.0, height=10.0):
         self._computeDataDependencies()

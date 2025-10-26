@@ -7,6 +7,8 @@ class Main:
                 help="Write workflow DAX to FILE", metavar="FILE")
         self.parser.add_option("-d", "--dot", dest="dotfile",
                 help="Write workflow DOT to FILE", metavar="FILE")
+        self.parser.add_option("-j", "--json", dest="jsonfile",
+                help="Write workflow JSON to FILE", metavar="FILE")
     
     def setoptions(self, parser):
         pass
@@ -19,8 +21,8 @@ class Main:
         
         (options, args) = self.parser.parse_args(args=list(argv))
         
-        if not options.daxfile and not options.dotfile:
-            self.parser.error("Specify --dax or --dot")
+        if not options.daxfile and not options.dotfile and not options.jsonfile:
+            self.parser.error("Specify --dax, --dot, or --json")
         
         wf = self.genworkflow(options)
         
@@ -29,6 +31,9 @@ class Main:
         
         if options.dotfile:
             wf.writeDOT(options.dotfile)
+
+        if options.jsonfile:
+            wf.writeJSON(options.jsonfile)
 
 
 if __name__ == '__main__':

@@ -2,3 +2,6 @@
 *.dax
 *.dot
 *.png
+*/*.xml
+*/*.dot
+*/*.json

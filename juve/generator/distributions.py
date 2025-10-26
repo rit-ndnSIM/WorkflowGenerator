@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import random
 
 __all__ = [ 'UniformDistribution', 'NormalDistribution' ]

@@ -1,5 +1,8 @@
 from collections import defaultdict
+from functools import reduce
 import json
+
+__all__ = [ 'KB', 'MB', 'GB', 'TB', 'SECONDS', 'MINUTES', 'HOURS', 'COLORS', 'File', 'Job', 'Workflow' ]
 
 KB = 1024
 MB = 1024*KB
@@ -129,7 +132,7 @@ class Workflow:
 
         for j in self.jobs:
             for p in j.parents:
-                index = max([val for key, val in dag[p.id].iteritems()] or [-1]) + 1
+                index = max([val for key, val in dag[p.id].items()] or [-1]) + 1
                 dag[p.id][j.id] = index
 
         json_out = { "dag": dag }

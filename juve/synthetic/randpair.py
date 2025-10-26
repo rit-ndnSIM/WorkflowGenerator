@@ -12,7 +12,7 @@ import random
 
 def randpair(N, E, runtimeDist, sizeDist):
     if E < 10:
-        print "E must be >= N"
+        print("E must be >= N")
         exit(1)
     
     w = Workflow(name="randpair", description="""Random workflow""")

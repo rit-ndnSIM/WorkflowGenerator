@@ -1,5 +1,7 @@
 from optparse import OptionParser
 
+__all__ = [ 'Main' ]
+
 class Main:
     def __init__(self):
         self.parser = OptionParser()

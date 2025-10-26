@@ -1,5 +1,7 @@
 import random
 
+__all__ = [ 'UniformDistribution', 'NormalDistribution' ]
+
 class UniformDistribution:
     def __init__(self, low, high):
         self.low = low
@@ -27,10 +29,10 @@ if __name__ == '__main__':
     f = UniformDistribution(0,10)
     for i in range(0, 100):
         x[int(f())] += 1
-    print "Uniform:",x
+    print("Uniform:",x)
     
     y = [0]*10
     g = NormalDistribution(5, 1)
     for i in range(0, 100):
         y[int(g())] += 1
-    print "Normal:", y
+    print("Normal:", y)
